@@ -1,4 +1,4 @@
 <template>
   <router-view />
 </template>
-<style src="./App.scss" lang="sass" />
+<style src="./App.scss" lang="scss" />
