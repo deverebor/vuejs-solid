@@ -1,6 +1,10 @@
-export default async (url: string) => {
-  const baseUrl = 'https://jsonplaceholder.typicode.com/'
+import { BaseApi } from '@/api/BaseApi'
+import { FetchApi } from '@/api/FetchApi'
+import { AxiosApi } from '@/api/AxiosApi'
 
-  const response = await fetch(`${baseUrl}${url}`)
-  return await response.json()
+export class Api extends BaseApi {
+  private provider: any = new AxiosApi()
+  async get(url: string): Promise<any> {
+    return await this.provider.fetch(url)
+  }
 }
