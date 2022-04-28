@@ -20,7 +20,7 @@ import { ITodos } from '@/helpers/interfaces/ITodos'
 import TodoList from '@/components/TodoList/TodoList.vue'
 import TodoCard from '@/components/TodoCard/TodoCard.vue'
 import HomeHeader from '@/components/HomeHeader/HomeHeader.vue'
-import Api from '@/api/api'
+import { Api } from '@/api/api'
 
 export default defineComponent({
   name: 'HomeView',
@@ -30,7 +30,7 @@ export default defineComponent({
     TodoCard
   },
   async mounted() {
-    this.todos = await this.addTodo()
+    this.todos = await this.getTodos()
   },
   data() {
     return {
@@ -38,9 +38,11 @@ export default defineComponent({
     }
   },
   methods: {
-    async addTodo(): Promise<ITodos[]> {
-      const api = Api('todos')
-      return await api
+    async getTodos(): Promise<ITodos[]> {
+      const api = new Api()
+      const response = await api.get('todos')
+
+      return response
     }
   }
 })
