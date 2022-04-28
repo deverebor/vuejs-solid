@@ -1,6 +1,7 @@
+import { IApi } from '@/helpers/interfaces/IApi'
 import { BaseApi } from '@/api/BaseApi'
 
-export class FetchApi extends BaseApi {
+export class FetchApi extends BaseApi implements IApi {
   constructor() {
     super()
   }

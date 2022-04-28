@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { BaseApi } from '@/api/BaseApi'
+import { IApi } from '@/helpers/interfaces/IApi'
 
-export class AxiosApi extends BaseApi {
+export class AxiosApi extends BaseApi implements IApi {
   constructor() {
     super()
   }
