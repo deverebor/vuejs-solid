@@ -3,12 +3,13 @@
     <HomeHeader />
     <main>
       <TodoList>
-        <TodoCard
+        <!-- <TodoCard
           v-for="todo in todos"
           :key="todo.id"
           :todoCompleted="todo.completed"
           :todoTitle="todo.title"
-        />
+        /> -->
+        <TodoRow v-for="todo in todos" :key="todo.id" :todo="todo" />
       </TodoList>
     </main>
   </div>
@@ -19,6 +20,7 @@ import { defineComponent } from 'vue'
 import { ITodos } from '@/helpers/interfaces/ITodos'
 import TodoList from '@/components/TodoList/TodoList.vue'
 import TodoCard from '@/components/TodoCard/TodoCard.vue'
+import TodoRow from '@/components/TodoRow/TodoRow.vue'
 import HomeHeader from '@/components/HomeHeader/HomeHeader.vue'
 import { Api } from '@/api/api'
 
@@ -27,7 +29,8 @@ export default defineComponent({
   components: {
     HomeHeader,
     TodoList,
-    TodoCard
+    //TodoCard,
+    TodoRow
   },
   async mounted() {
     this.todos = await this.getTodos()

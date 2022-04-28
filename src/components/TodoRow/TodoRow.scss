@@ -1,0 +1,13 @@
+$task-color: #4169e1;
+$task-completed-color: #2e8b57;
+
+.todo-row {
+  width: 100%;
+  text-align: left;
+  color: $task-color;
+
+  &__completed {
+    color: $task-completed-color;
+    text-decoration: line-through;
+  }
+}
