@@ -3,7 +3,6 @@ import { shallowMount } from '@vue/test-utils'
 import HomeView from '../HomeView.vue'
 
 import { HOME_VIEW_MOCK } from './mocks/HomeView.mock'
-import { Api } from '@/api/api'
 
 describe('HomeView.vue', () => {
   let wrapper: any
@@ -30,10 +29,12 @@ describe('HomeView.vue', () => {
   })
 
   it('Should todo data has updated when getTodos is called', async () => {
-    await jest.spyOn(wrapper.vm, 'getTodos')
+    await jest.spyOn(wrapper.vm, 'getTodos').mockImplementation(() => {
+      wrapper.setData({ todos: HOME_VIEW_MOCK })
+    })
 
     await wrapper.vm.getTodos()
 
-    expect(wrapper.vm.todos[0]).toStrictEqual(HOME_VIEW_MOCK[0])
+    expect(wrapper.vm.todos).toStrictEqual(HOME_VIEW_MOCK)
   })
 })
